@@ -3,24 +3,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 
-namespace My.Functions
+namespace Company.Function
 {
-    public class HttpExample
+    public class LRTest
     {
-        private readonly ILogger<HttpExample> _logger;
+        private readonly ILogger<LRTest> _logger;
 
-        public HttpExample(ILogger<HttpExample> logger)
+        public LRTest(ILogger<LRTest> logger)
         {
             _logger = logger;
         }
 
-        [Function("HttpExample")]
+        [Function("LRTest")]
         public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
-            
-            string ev = Environment.GetEnvironmentVariable("CORECLR_PROFILER_PATH_64");
-            _logger.LogInformation("ev");
             return new OkObjectResult("Welcome to Azure Functions!");
         }
     }
