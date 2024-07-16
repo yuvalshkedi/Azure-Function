@@ -7,6 +7,8 @@ using Lightrun;
 LightrunAgent.Start(new AgentOptions {
     Secret = "d5415486-6a3d-432f-b547-e19dcc36366a",
     ServerUrl = new Uri("https://app.lightrun.com"),
+    Tags = new[] {"Production", "dotnet"},
+    AlsoLogToStandardError = true
 });
 
 
