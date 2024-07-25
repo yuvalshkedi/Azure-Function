@@ -18,10 +18,8 @@ namespace My.Functions
         public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
-            
-            string ev = Environment.GetEnvironmentVariable("CORECLR_PROFILER_PATH_64");
-            _logger.LogInformation("Environment variable = " + ev);
-            return new OkObjectResult("Welcome to Azure Functions!");
+            string name = req.Query["name"];
+            return new OkObjectResult($"Welcome to Azure Functions, {name}!");
         }
     }
 }
